@@ -1,0 +1,14 @@
+{
+	"programmers comment": {
+		"prefix": "pgs",
+		"body": [
+			"/**",
+			" * [프로그래머스] ${1}",
+			" * url: ${2}",
+			" * 작성일: 2025-${3}-${4}",
+			" */",
+			"${5}"
+		],
+		"description": "programmers comment"
+	}
+}
