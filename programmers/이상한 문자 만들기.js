@@ -6,7 +6,7 @@
 function solution(s) {
     let answer = '';
     s.split(' ').map((word, index) => {
-        answer += word.split('').map((w, i) => i%2 === 0 ? w.toUpperCase() : w).join('');
+        answer += word.split('').map((w, i) => i%2 === 0 ? w.toUpperCase() : w.toLowerCase()).join('');
         if (index !== s.split(' ').length - 1) answer += ' ';
     });
     return answer;
