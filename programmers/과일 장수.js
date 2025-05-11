@@ -4,14 +4,15 @@
  * 작성일: 2025-03-26
  */
 function solution(k, m, score) {
-  let result = 0;
-  score.sort((a, b) => b - a);
-  while (score.length >= m) {
-      const target = score.splice(0, m);
-      // const p = Math.min(...target);
-      const p = target[m-1];
-      console.log(p)
-      result += p * m;
-  }
-  return result;
+    let result = 0;
+    score.sort((a, b) => b - a);
+    
+    for (let i = 0; i < score.length; i += m) {
+        const target = score.slice(i, m+i);
+        if (target.length !== m) break;
+        
+        const p = target[m-1];
+        result += p * m;
+    }
+    return result;
 }
