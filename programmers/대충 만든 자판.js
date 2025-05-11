@@ -13,10 +13,14 @@ function solution(keymap, targets) {
     });
     targets.forEach((target) => {
         let count = 0;
-        target.split('').forEach((t) => {
+        for (let i = 0; i < target.split('').length; i++) {
+            const t = target.split('')[i];
             if (countsMap[t]) count += countsMap[t];
-        });
-        if (count === 0) count = -1;
+            else {
+                count = -1;
+                break; // 한 글자라도 존재하지 않을 경우 작성 불가능
+            }
+        }
         answer.push(count);
     });
     return answer;
