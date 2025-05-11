@@ -6,7 +6,7 @@
 function solution(s) {
     const answer = Array.from({length: s.split('').length}).fill(-1);
     for (let i = 0; i < s.split('').length; i++) {
-        for (let j = i-1; j > 0; j--) {
+        for (let j = i-1; j >= 0; j--) {
             const sliced = s.split('').slice(0, i);
             if (s[i] === sliced[j]) {
                 answer[i] = i-j;
