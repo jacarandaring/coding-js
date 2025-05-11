@@ -4,18 +4,16 @@
  * 작성일: 2025-04-21
  */
 function solution(n) {
-    var answer = 1;
-    for (let i = 3; i <= n; i++) {
-        if (i % 2 === 0) continue;
-
-        let flag = true;
-        for (let j = 3; j <= Math.sqrt(i); j++) {
-            if (i % j === 0) {
-                flag = false;
-                break;
-            }
-        }
-        if (flag) answer++;
+    let array = [];
+    for (let i = 2; i <= n; i++) { // 2 ~ n 배열에 담아서
+        array[i] = i;
     }
-    return answer;
+    
+    for (let i = 2; i <= n; i++) {
+        for (let j = i + i; j <= n; j += i) { // n까지의 i의 배수 모두 제거
+            array[j] = 0;
+        }
+    }
+    
+    return array.filter((arr) => arr !== 0).length;
 }
