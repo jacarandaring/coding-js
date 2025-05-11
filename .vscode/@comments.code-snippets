@@ -10,5 +10,17 @@
 			"${5}"
 		],
 		"description": "programmers comment"
+	},
+	"baekjoon comment": {
+		"prefix": "baek",
+		"body": [
+			"/**",
+			" * [백준] ${1}",
+			" * url: ${2}",
+			" * 작성일: 2025-${3}-${4}",
+			" */",
+			"${5}"
+		],
+		"description": "baekjoon comment"
 	}
 }
