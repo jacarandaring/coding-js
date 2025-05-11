@@ -5,22 +5,23 @@
  */
 function solution(s) {
     var answer = 0;
-    let rest = s;
-    while (rest.length > 1) {
-        let x = rest[0];
-        let xCount = 1;
-        let yCount = 0;
-        for (let i = 1; i < rest.length; i++) {
-            if (rest[i] === x) xCount++;
-            else yCount++;
-            
-            if (xCount === yCount) {
-                answer++;
-                rest = rest.substring(xCount + yCount);
-                break;
-            }
+    let x = s[0];
+    let xCount = 0;
+    let yCount = 0;
+    
+    for (let i = 0; i < s.length; i++) {
+        if (x === s[i]) xCount++;
+        else yCount++;
+        
+        if (xCount === yCount) {
+            x = s[i+1]; // 포인터를 옮기는 방식
+            xCount = 0;
+            yCount = 0;
+            answer++;
+        } else if (!s[i+2]) {
+            answer++;
+            break;
         }
     }
-    if (rest.length > 0) answer++;
     return answer;
 }
