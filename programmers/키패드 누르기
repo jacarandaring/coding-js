@@ -1,0 +1,59 @@
+/**
+ * [프로그래머스] 키패드 누르기
+ * url: https://school.programmers.co.kr/learn/courses/30/lessons/67256
+ * 작성일: 2025-07-02
+ */
+function solution(numbers, hand) {
+    let result = '';
+    const keypad = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        ['*', 0, '#'],
+    ];
+    const leftNum = keypad.map((key) => key[0]);
+    const rightNum = keypad.map((key) => key[2]);
+    // 왼손, 오른손의 현재 위치
+    let leftSpot = [3, 0];
+    let rightSpot = [3, 2];
+    
+    // 주어지는 숫자의 위치 반환
+    function findSpot(number) {
+        for (let i = 0; i < keypad.length; i++) {
+            for (let j = 0; j < keypad[i].length; j++) {
+                if (keypad[i][j] === number) {
+                    return [i, j];
+                }
+            }
+        }
+    }
+    // 번호 누른 결과 설정 및 손 위치에 따라 현재 위치 설정
+    function setData(handed, currentNumber) {
+        if (handed === 'right') {
+            result += 'R';
+            rightSpot = findSpot(currentNumber);
+        } else {
+            result += 'L';
+            leftSpot = findSpot(currentNumber);
+        }
+    }
+    
+    for (let number of numbers) {
+        if (leftNum.includes(number)) {
+            setData('left', number);
+            continue;
+        } else if (rightNum.includes(number)) {
+            setData('right', number);
+            continue;
+        } else {
+            const [x, y] = findSpot(number);
+            const isLeftShort = (Math.abs(leftSpot[0] - x) + Math.abs(leftSpot[1] - y)) - (Math.abs(rightSpot[0] - x) + Math.abs(rightSpot[1] - y));
+            
+            if (isLeftShort < 0) setData('left', number);
+            else if (isLeftShort > 0) setData('right', number);
+            else setData(hand, number);
+        }
+    }
+    
+    return result;
+}
