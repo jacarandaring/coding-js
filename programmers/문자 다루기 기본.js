@@ -4,5 +4,5 @@
  * 작성일: 2025-07-21
  */
 function solution(s) {
-    return (s.length === 4 || s.length === 6) && !isNaN(Number(s));
+    return (s.trim().length === 4 || s.trim().length === 6) && !isNaN(Number(s));
 }
