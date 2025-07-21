@@ -5,13 +5,5 @@
  */
 function solution(arr)
 {
-    const result = [];
-    let dup = -1;
-    arr.forEach((a) => {
-        if (dup !== a) {
-            result.push(a);
-            dup = a;
-        }
-    });
-    return result;
+    return arr.filter((a, i) => a !== arr[i+1]);
 }
