@@ -4,7 +4,11 @@
  * 작성일: 2025-07-25
  */
 function solution(x) {
-    // 각 자리 수의 합
-    const sum = String(x).split('').reduce((acc, cur) => acc += Number(cur), 0);
+    let target = x; // sum 계산용
+    let sum = 0;
+    while (target >= 1) {
+        sum += target % 10;
+        target = Math.floor(target/10);
+    }
     return !(x % sum);
 }
